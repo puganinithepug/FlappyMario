@@ -1,7 +1,7 @@
 
 public enum Forces {
 	
-	GRAVITY(1), VELY(-15), FREEFALL(0), VELX(-4);
+	GRAVITY(1), VELY(-8), FREEFALL(0), VELX(-4);
 	
 	private int val;
 
