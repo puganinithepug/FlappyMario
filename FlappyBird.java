@@ -113,7 +113,7 @@ public class FlappyBird extends JPanel  implements ActionListener, KeyListener {
 	
 	//adding pipes
 	public void placePipes() {
-		int randompY = (int) (pY - pH/5 -Math.random()*(pH/2)); //shift up by quarter of its height
+		int randompY = (int) (pY - pH/10 -Math.random()*(pH/2)); //shift up by quarter of its height
 		int space = bH/3;
 		Pipe tp = new Pipe(toppipe);
 		tp.pipeY = randompY;
@@ -144,7 +144,7 @@ public class FlappyBird extends JPanel  implements ActionListener, KeyListener {
 			//score display
 			g.setColor(Color.red);
 			g.setFont(new Font("Arial", Font.ITALIC, 25));
-			if(gameOver) {
+			if(gameOver) {  
 				g.drawString("Game Over: " + String.valueOf((int) score), 10, 35);
 			}
 			else {
@@ -166,17 +166,10 @@ public class FlappyBird extends JPanel  implements ActionListener, KeyListener {
 			Pipe pipe = pipes.get(i);
 			pipe.pipeX += Forces.getForce(3);
 			
-			if(pipe.passed && mX >pipe.pipeX+pipe.pipeW) {
-				pipe.passed= true;
-				score+=0.5;
-			}
+			if(mX >pipe.pipeX+pipe.pipeW) {
+				score+=0.5;} 
 			
-			if(collision(pipe)) {
-				gameOver = true;
-				}
-			}
-		if(mY>bH) {
-			gameOver = true;
+			if(collision(pipe) || mY>bH) {gameOver = true;}
 		}
 	}
 	
